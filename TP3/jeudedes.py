@@ -1,4 +1,5 @@
 from random import *
+import names
 
 def identique(t):
     """
@@ -12,15 +13,15 @@ def identique(t):
     return res
 
 
-def jouer(joueur, nb_de_dés, score):
+def jouer(joueur,nom, nb_de_dés, score):
     """
-    Lance les dés pour un joueur, calcul le nouveau score et fair l'affichage pour ce joueur
+    Lance les dés pour un joueur, calcul le nouveau score et fait l'affichage pour ce joueur
     """
     lancements=[randint(1,6) for _ in range(nb_de_dés)]
     if identique(lancements):
         score[joueur]+=1
 
-    print(joueur,'-', lancements,'- score = ',score[joueur])
+    print(nom[joueur],'-', lancements,'- score = ',score[joueur])
 
 
 def est_gagnant(score):
@@ -41,7 +42,7 @@ def est_gagnant(score):
     return res,gagnant
 
 
-def jeu(nb_joueur,nb_tour,nb_dés):
+def jeu(nb_joueur,liste_noms,nb_dés,nb_tour=100000):
     """
     Fonction principale du jeu
     """
@@ -52,18 +53,26 @@ def jeu(nb_joueur,nb_tour,nb_dés):
     while tour<=nb_tour and not gagnant_present:
         print("----- Tour : ",tour," -----")
         for joueur in range(nb_joueur):
-            jouer(joueur, nb_dés, score)
+            jouer(joueur,liste_noms, nb_dés, score)
         
         gagnant_present, gagnant =  est_gagnant(score)
         tour+=1
 
     if gagnant_present:
-        print('Le gagant est : ',gagnant)
+        print('Le gagant est : ',liste_noms[gagnant])
     else:
         print('Match nul')
 
 
 
+NOMBRE_DE_JOUEUR = 5
+NOMBRE_DE_DES = 3
+
+LISTE_NOMS = [names.get_first_name() for _ in range(NOMBRE_DE_JOUEUR)]
 
 
-jeu(5,100000,5)
+jeu(NOMBRE_DE_JOUEUR,
+    LISTE_NOMS,
+    NOMBRE_DE_DES
+    )
+
