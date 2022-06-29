@@ -62,7 +62,8 @@ def jeu(nb_joueur,liste_noms,nb_dés,nb_tour=100000):
         print('Le gagant est : ',liste_noms[gagnant])
     else:
         print('Match nul')
-
+        
+        
 
 
 NOMBRE_DE_JOUEUR = 5
