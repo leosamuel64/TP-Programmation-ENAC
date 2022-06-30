@@ -14,7 +14,7 @@ def ajoutVol(L):
     imat=input("Immatriculation de l'appareil : ")
     src=input("Aérodrome de départ (OACI) : ")
     dest=input("Aérodrome d'arrivé (OACI) : ")
-    L.append((imat,src,dest))
+    L.append((imat.upper(),src.upper(),dest.upper()))
     print("----- Fin de l'ajout -----")
     
 def supprimeVol(L):

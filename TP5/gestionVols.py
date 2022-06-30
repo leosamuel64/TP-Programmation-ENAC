@@ -1,10 +1,14 @@
+from asyncore import read
 import fonctionsVols as v
 import simui as s
 
 
-def main():
+
+def main(chemin):
     continuer = True
     vols = []
+    
+   
 
     while continuer:
         # Print menu
@@ -19,7 +23,7 @@ def main():
 
         match choice:
             case 'Q':
-                continuer=False
+                continuer=False    
             case 'P':
                 v.afficherVol(vols)
             case 'A':
@@ -30,18 +34,28 @@ def main():
 # main()
 
 
-def main_Menu():
+def main_Menu(chemin):
     continuer = True
     vols = []
+
+    file=open(chemin,'r') 
+    lignes=file.readlines()
+    for l in lignes:
+        imat,src,dest=l.split(';')
+        vols.append((imat,src,dest.strip()))
+    file.close() 
 
     while continuer:
         # Print menu
         choice = s.menu(['Quit','Afficher Vols', 'Ajouter Vol', 'Supprimer Vol'])
 
-
         match choice:
             case 0:
                 continuer=False
+                file=open(chemin,'w')
+                for (imat,src,dest) in vols:
+                    file.write(imat+';'+src+';'+dest+'\r')
+                file.close()
             case 1:
                 v.afficherVol(vols)
             case 2:
@@ -49,4 +63,4 @@ def main_Menu():
             case 3:
                 v.supprimeVol2(vols)
                 
-main_Menu()
+main_Menu('TP5/file.csv')

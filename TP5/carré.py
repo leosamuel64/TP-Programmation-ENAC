@@ -55,11 +55,15 @@ def somme_diago(t,i):
 def verif(t):
     somme=somme_ligne(t,0)
     res=True
-    for i in range(len(t)):
+    i=0
+    while i<len(t) and res:
         res= res and (somme==somme_ligne(t,i))
         res= res and (somme==somme_colonne(t,i))
-    for i in range(2):
+        i+=1
+    i=0
+    while i<2 and res:
         res= res and (somme==somme_diago(t,i))
+        i+=1
         
     return res
 
