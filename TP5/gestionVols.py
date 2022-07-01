@@ -6,12 +6,9 @@ import simui as s
 
 def main(chemin):
     continuer = True
-    vols = []
-    
-   
+    vols = v.charger(chemin)
 
     while continuer:
-        # Print menu
         print("\t\t\t ------- MENU -------")
         print("\t\t\t Quit               Q")
         print("\t\t\t Afficher Vols      P")
@@ -36,31 +33,20 @@ def main(chemin):
 
 def main_Menu(chemin):
     continuer = True
-    vols = []
-
-    file=open(chemin,'r') 
-    lignes=file.readlines()
-    for l in lignes:
-        imat,src,dest=l.split(';')
-        vols.append((imat,src,dest.strip()))
-    file.close() 
+    vols = v.charger(chemin)
 
     while continuer:
-        # Print menu
         choice = s.menu(['Quit','Afficher Vols', 'Ajouter Vol', 'Supprimer Vol'])
 
         match choice:
             case 0:
                 continuer=False
-                file=open(chemin,'w')
-                for (imat,src,dest) in vols:
-                    file.write(imat+';'+src+';'+dest+'\r')
-                file.close()
             case 1:
                 v.afficherVol(vols)
             case 2:
                 v.ajoutVol(vols)
+                v.sauver(chemin, vols)
             case 3:
                 v.supprimeVol2(vols)
                 
-main_Menu('TP5/file.csv')
+main_Menu('TP5/flights.txt')

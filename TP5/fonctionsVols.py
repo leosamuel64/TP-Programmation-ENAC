@@ -28,3 +28,20 @@ def supprimeVol2(L):
         res.append(imat+' '+src+' '+dest)
     indice = s.menu(res)
     L.pop(int(indice))
+    
+def charger(chemin):
+    vols=[]
+    file=open(chemin,'r') 
+    for l in file:
+        imat,src,dest=l.split(' ')
+        vols.append((imat,src,dest.strip()))
+    file.close() 
+    return vols
+
+def sauver(chemin,vols):
+    file=open(chemin,'w')
+    for (imat,src,dest) in vols:
+        file.write(imat+' '+src+' '+dest+'\r')
+    file.close()
+    
+    
