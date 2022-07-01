@@ -50,4 +50,4 @@ def main_Menu(chemin,chdico):
             case 3:
                 v.supprimeVol2(vols)
                 
-main_Menu('TP6/flights.txt','TP6/airports.txt')
+main_Menu('Python/TP6/flights.txt','Python/TP6/airports.txt')

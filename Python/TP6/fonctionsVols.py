@@ -4,7 +4,14 @@ def afficherVol(L,dico):
     print('----- Début des vols -----')
     i=0
     for (imat,src,dest) in L:
-        print('['+str(i)+']',imat,src,dest,int(distance_terrain(src,dest,dico)),'km')
+        distance=distance_terrain(src,dest,dico)
+        type_distance=type(distance)
+        print('['+str(i)+']',
+              imat+' |',
+              src+' |',
+              dest+' |',
+              int(distance) if type_distance==float else 'Code OACI inconnu',
+              'km' if type_distance==float else ' ')
         i+=1
     print('----- Fin des vols -----')
     _=input('Appuyez sur [ENTER] pour continuer')
@@ -62,10 +69,11 @@ def charge_terrain(chemin):
 def distance(X,Y):
     return ((X[0]-Y[0])**2 + (X[1]-Y[1])**2)**(1/2)
 
-
-
 def distance_terrain(a,b,dico):
-    return distance(dico[a],dico[b])
+    if a in dico.keys() and b in dico.keys():
+        return distance(dico[a],dico[b])
+    else:
+        return 'Impossible de calculer la distance (ICAO inconnu)'
         
     
         
