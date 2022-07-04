@@ -37,7 +37,7 @@ def main_Menu(chemin,chdico):
     dico=v.charge_terrain(chdico)
 
     while continuer:
-        choice = s.menu(['Quit','Afficher Vols', 'Ajouter Vol', 'Supprimer Vol'])
+        choice = s.menu(['Quit','Afficher Vols', 'Ajouter Vol', 'Supprimer Vol','Total temps de vol','Temps de vol après une date'])
 
         match choice:
             case 0:
@@ -49,5 +49,10 @@ def main_Menu(chemin,chdico):
                 v.sauver(chemin, vols)
             case 3:
                 v.supprimeVol2(vols)
+                v.sauver(chemin, vols)
+            case 4:
+                v.total_tps_vol(vols,dico)
+            case 5:
+                v.tps_vol_av_date(vols,dico)
                 
 main_Menu('Python/TP6/flights.txt','Python/TP6/airports.txt')
