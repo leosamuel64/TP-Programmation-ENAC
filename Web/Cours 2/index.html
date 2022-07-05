@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Mon nouveau site</title>
+  <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  
+
+
+  <style>
+    table,
+    th,
+    tr,
+    td {
+      border: 1px solid rgb(255, 0, 0)
+    }
+  </style>
+</head>
+
+<body>
+  <nav></nav>
+  <header></header>
+  <main>
+    <section>
+
+    </section>
+
+    <section>
+      <form action="page2.html" method="POST">
+        <label for="login">Login</label> <br>
+        <input type="text" name="login" id="login" placeholder="Votre login" required/> <br>
+
+        <label for="motpasse">Mot de passe</label> <br>
+        <input type="password" name="motpasse" id="motpasse" placeholder="Votre mot de passe" required/> <br>
+
+        <label for="mail">Email</label> <br>
+        <input type="email" name="mail" id="mail" placeholder="Votre email" required/> <br>
+
+        <label for="age">Age</label> <br>
+        <input type="number" name="age" id="age" value="10" placeholder="Votre age" min="0" /> <br>
+
+        <label for="fichier">Fichier</label> <br>
+        <input type="file" name="fichier" id="fichier" /> <br>
+
+        <label for="customrange">Range</label> <br>
+        <input type="range" name="customrange" id="customrange" /> <br>
+
+        <label for="maDate">Date</label> <br>
+        <input type="datetime-local" name="maDate" id="maDate" /> <br>
+
+        <div>Qu'allez vous manger à midi ?</div>
+        <input type="checkbox" name="choix[]" id="C1" value="1">
+        <label for="C1">Pokebowl</label>
+
+        <input type="checkbox" name="choix[]" id="C2" value="2">
+        <label for="C2">Fondant au choco</label>
+
+        <input type="checkbox" name="choix[]" id="C3" value="3">
+        <label for="C3">couscous</label>
+
+        <input type="checkbox" name="choix[]" id="C4" value="4">
+        <label for="C4">Maroilles</label> <br>
+
+
+        <div>Quel est votre plat préféré ?</div>
+        <input type="radio" name="radio[]" id="R1" value="1">
+        <label for="R1">Pokebowl</label>
+
+        <input type="radio" name="radio[]" id="R2" value="2">
+        <label for="R2">Fondant au choco</label>
+
+        <input type="radio" name="radio[]" id="R3" value="3">
+        <label for="R3">couscous</label>
+
+        <input type="radio" name="radio[]" id="R4" value="4">
+        <label for="R4">Maroilles</label> <br>
+
+
+        <div><label for="monSelect">Liste des plats</label></div>
+        <select name="monSelect" id="monSelect">
+          <option selected disabled>Faites votre choix de repas</option>
+          <option value="1">Pokebowl</option>
+          <option value="2">Fondant au choco</option>
+          <option value="3">Couscous</option>
+          <option value="4">Maroilles</option>
+        </select> <br>
+
+        <label for="comment">Zone de commentaires</label> <br>
+        <textarea name="comment" id="comment" placeholder="Commentaires ?"></textarea> <br>
+
+        <button type="reset">Reset</button>
+        <button type="submit">Envoyer</button>
+      </form>
+
+
+    </section>
+
+    <section>
+
+      <h2>Image</h2>
+      <img src="images/ecole.png" alt="enac" title="Voici mon école" />
+
+      <h2>Carte Google map</h2>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6875.943295521423!2d1.4750008009557138!3d43.565340802352225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebdcc97f63627%3A0x4973c9f85bbbf5fd!2s%C3%89cole%20Nationale%20de%20l&#39;Aviation%20Civile!5e0!3m2!1sfr!2sfr!4v1623429198366!5m2!1sfr!2sfr"
+        width="50%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+      <h2>Vidéo Youtube</h2>
+      <iframe width="50%" height="315" src="https://www.youtube.com/embed/DwkJKuYuCXY" title="YouTube video player"
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+
+
+      <h2>Listes ordonnées</h2>
+      <ul type="a">
+        <li><a href="page2.html">menu 1</a></li>
+        <li><a href="index.html">menu 2</a></li>
+        <li><a href="http://www.enac.fr" target="_blank">menu 3</a></li>
+        <li>menu 4</li>
+      </ul>
+
+      <h2>Listes non ordonnées</h2>
+      <ol type="square">
+        <li><a href="page2.html">menu 1</a></li>
+        <li><a href="index.html">menu 2</a></li>
+        <li><a href="http://www.enac.fr" target="_blank">menu 3</a></li>
+        <li>menu 4</li>
+      </ol>
+
+      <h2>Tableau</h2>
+      <table class="table my-5 w-50 ms-5 table-dark table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Colonne 1</th>
+            <th>Colonne 2</th>
+            <th>Colonne 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>a</td>
+            <td>b</td>
+            <td>c</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td rowspan="2">e</td>
+            <td colspan="2">f</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>g</td>
+            <td>h</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <h2>Conteneurs</h2>
+      <div>coucou</div>
+      <div>boite2</div>
+      <p>paragraphe</p>
+
+      <h2>Titres importants</h2>
+      <h1>Titre 1</h1>
+      <h2>Titre 2</h2>
+      <h3>Titre 3</h3>
+      <h4>Titre 4</h4>
+      <h5>Titre 5</h5>
+      <h6>Titre 6</h6>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; ENAC 2022
+  </footer>
+
+</body>
+
+</html>
