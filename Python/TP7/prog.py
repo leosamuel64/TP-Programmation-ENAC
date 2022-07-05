@@ -70,7 +70,7 @@ def pi(ε):
 
 class fraction:
     def __init__(self,a,b):
-        gcd = gcd2(a,b)
+        gcd = gcd1(a,b)
         self.numerator=a//gcd
         self.denominator=b//gcd
     def __repr__(self):
@@ -92,8 +92,17 @@ api=fraction(104348,33215)
 # print(fraction(6,8))
 # print(fraction(6,8).approximate())
 
-print(fraction(4,8)+fraction(6,7))
+# print(fraction(4,8)+fraction(6,7))
 
+L=[fraction(8,(4*n+1)*(4*n+3)) for n in range(1001)]
+
+def sum_rationals(l):
+    somme=fraction(0,1)
+    for frac in l:
+        somme+=frac
+    return somme
+        
+# print(sum_rationals(L),sum_rationals(L).approximate())
 
 
 
