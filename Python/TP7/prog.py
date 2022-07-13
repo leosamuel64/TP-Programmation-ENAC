@@ -94,29 +94,92 @@ api=fraction(104348,33215)
 
 # print(fraction(4,8)+fraction(6,7))
 
-L=[fraction(8,(4*n+1)*(4*n+3)) for n in range(1001)]
+# L=[fraction(8,(4*n+1)*(4*n+3)) for n in range(10001)]
 
 def sum_rationals(l):
     somme=fraction(0,1)
     for frac in l:
         somme+=frac
     return somme
+
+def sum_approximate(L):
+    somme=0
+    for frac in L:
+        somme+=frac.approximate()
+    return somme
         
-# print(sum_rationals(L),sum_rationals(L).approximate())
+# print(sum_rationals(L).approximate())
+
+# print(sum_approximate(L))
 
 
+class Inode:
+    def __init__(self,n):
+        """
+        n doit être de type string
+        """
+        self.name=n
+        self.path=""
 
-
-
+    def full_path(self):
+        return self.path+'/'+self.name
+    
+    def get_size(self):
+        return 0
+    
+    def set_path(self,chaine):
+        self.path=chaine
         
+class File(Inode):
+    def __init__(self,size,name):
+        super().__init__(name)
+        self.size=size
+      
+    def get_size(self):
+        return self.size
+    
+    
+# fichier=File(438,'source.list')
+
+# print(File.full_path(fichier))
+
+class Directory(Inode):
+    def __init__(self, name):
+        super().__init__(name)
+        self.contents=[]
         
-
-
-
+    def get_size(self):
+        return sum([fichier.get_size() for fichier in self.contents])
+    
+    def add_inode(self, fichier):
+        self.contents.append(fichier)
+        fichier.set_path(self.full_path()+'/'+fichier.name)
         
-            
-
-
+    def set_path(self, chaine):
+        for fichier in self.contents:
+            fichier.path=chaine
+        self.path=chaine
         
-            
+def type_fichier(fichier):
+    try:
+        fichier.contents
+        return 'Directory'
+    except:
+        return 'File'            
 
+                         
+fichier1=File(438,'a')
+fichier2=File(438,'b')
+
+root=Directory('root')
+home=Directory('home')
+etc=Directory('etc')
+apt=Directory('apt')
+fichierSource=File(438,'source.list')
+fichierImg=File(17*(10**6),'initrd.img')
+
+apt.add_inode(fichierSource)
+etc.add_inode(apt)
+root.add_inode(home)
+root.add_inode(etc)
+root.add_inode(fichierImg)
