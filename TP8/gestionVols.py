@@ -2,7 +2,15 @@ from flask import Flask
 from flask import url_for
 from fonctions import *
 
+menu="""
 
+<nav class="navbar navbar-light navbar-expand-lg">
+    <a class="navbar-text btn fs-5" href="/">Home</a>
+    <a class="navbar-text btn fs-5" href="afficher">Afficher</a>
+    <a class="navbar-text btn fs-5" href="supprimer">Supprimer</a>
+    <a class="navbar-text btn fs-5" href="presentation">Présentation</a>
+</nav>
+"""
         
 head="""
 <!DOCTYPE html>
@@ -28,51 +36,38 @@ head="""
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
-
-
-
 """
 
 app = Flask(__name__)
 @app.route ('/')
 def index() :
-    content=head+    """
+    content=head+menu+    """
     <b>Index</b><br>
-    <a href="afficher">Afficher</a> <br>
-    <a href="supprimer">supprimer</a> <br>
-    <a href="presentation">presentation</a> <br>
     <img src='/static/images/slide-6.jpg' width="200" height="200"/>
     """
     return content
 
 @app.route ('/afficher')
 def afficher() :
-    content= head+   """
+    content= head+menu+   """
     <div><b>Afficher</b></div>
-    <a href="/">Home</a><br>
-    <a href="supprimer">supprimer</a><br>
-    <a href="presentation">presentation</a><br>
+    
                 """ + mise_en_tableau('TP8/flights.txt',['Date','Immat','Départ','Destination','Appareil'])
     return content
 
 
 @app.route ('/supprimer')
 def suppression_vols() :
-    content=  head+  """
+    content=  head+menu+  """
     <b>supprimer</b><br>
-    <a href="afficher">Afficher</a><br>
-    <a href="/">Home</a><br>
-    <a href="presentation">presentation</a>
+    
                 """
     return content
 
 @app.route ('/presentation')
 def presentation() :
-    content=   head+ """
-    <b>presentation</b><br>
-    <a href="afficher">Afficher</a><br>
-    <a href="supprimer">supprimer</a><br>
-    <a href="/">Home</a>
+    content=   head+menu+ """
+    
                 """
     return content
 

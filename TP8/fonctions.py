@@ -14,10 +14,10 @@ def mise_en_tableau(file,tete):
     return res
 
 def charge_html(file):
-    res=""
+    res=""""""
     f=open(file,'r')
     for ligne in f:
-        res+=ligne
+        res+=ligne+'\n'
     return res
 
     
