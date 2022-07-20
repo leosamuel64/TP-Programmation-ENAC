@@ -47,7 +47,7 @@
       </div>
 
       <div class="col-5">
-        <form class="w-75 mx-auto pt-3 pb-3" action="index.html" method="POST">
+        <form class="w-75 mx-auto pt-3 pb-3" action="/resultat" method="GET">
           <div class="d-flex">
 
             <div class="container">
@@ -76,9 +76,9 @@
                   <option selected disabled>
                     -- OACI Départ --
                   </option>
-                  <option value="LFBR">LFBR-Muret</option>
-                  <option value="LFBR">LFBA-Agen</option>
-                  <option value="LFBO">LFBO-Toulouse</option>
+                  {%for (code,nom) in aeroport%}
+                  <option value="{{code}}">{{nom}}</option>
+                  {%endfor%}
                 </select>
               </div>
             </div>
@@ -98,9 +98,10 @@
                   <option selected disabled>
                     -- OACI Arrivée --
                   </option>
-                  <option value="LFBR">LFBR-Muret</option>
-                  <option value="LFBR">LFBA-Agen</option>
-                  <option value="LFBO">LFBO-Toulouse</option>
+                  {%for (code,nom) in aeroport%}
+                  <option value="{{code}}">{{nom}}</option>
+                  {%endfor%}
+
                 </select>
 
               </div>
@@ -117,7 +118,7 @@
               </div>
               <div class="col-6">
                 <label for="hdep"><i class="fa-solid fa-clock fa-2x"></i> Heure Arrivée</label>
-                <input type="time" name="hdep" id="hdep" class="form-control" />
+                <input type="time" name="harr" id="harr" class="form-control" />
               </div>
             </div>
           </div>

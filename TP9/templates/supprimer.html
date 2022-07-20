@@ -55,7 +55,7 @@
       {% for vol in vols %}
         <tr>
           <td class="text-center">
-            <i class="fa-solid fa-trash fa-2x"></i>
+            <a href=/supprimer.html/'{{loop.index}}'> <i class="fa-solid fa-trash fa-2x"></i></a>
           </td>
           {% for item in vol %}<td class="text-center">{{ item }}</td>{% endfor %}
         </tr>
