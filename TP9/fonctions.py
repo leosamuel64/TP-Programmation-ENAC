@@ -22,5 +22,7 @@ def liste_aeroport():
         res.append([t[0],temp[0:len(temp)-1]])
 
     return res
+
+print(liste_aeroport())
                 
         
