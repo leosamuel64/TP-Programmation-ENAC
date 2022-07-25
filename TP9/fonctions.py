@@ -16,7 +16,6 @@ def liste_aeroport():
     f=open('data/airports.txt')
     for ligne in f:
         t = ligne.split()
-        print(t)
         temp=t[0]+'-'
         for i in range(3,len(t)):
             temp+=t[i]+' '
@@ -25,4 +24,3 @@ def liste_aeroport():
     return res
                 
         
-print(liste_aeroport())
