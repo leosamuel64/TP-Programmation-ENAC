@@ -72,7 +72,7 @@
 
               </div>
               <div class="col-10">
-                <select name="dep" aria-label="monSelect" class="form-control">
+                <select name="dep" aria-label="monSelect" class="form-control" required>
                   <option selected disabled>
                     -- OACI Départ --
                   </option>
@@ -94,7 +94,7 @@
 
               </div>
               <div class="col-10">
-                <select name="arr" aria-label="monSelect" class="form-control">
+                <select name="arr" aria-label="monSelect" class="form-control" required>
                   <option selected disabled>
                     -- OACI Arrivée --
                   </option>
@@ -114,11 +114,11 @@
             <div class="row">
               <div class="col-6">
                 <label for="hdep"><i class="fa-regular fa-clock fa-2x"></i> Heure Départ</label>
-                <input type="time" name="hdep" id="hdep" class="form-control" />
+                <input type="time" name="hdep" id="hdep" class="form-control" required />
               </div>
               <div class="col-6">
                 <label for="hdep"><i class="fa-solid fa-clock fa-2x"></i> Heure Arrivée</label>
-                <input type="time" name="harr" id="harr" class="form-control" />
+                <input type="time" name="harr" id="harr" class="form-control" required />
               </div>
             </div>
           </div>

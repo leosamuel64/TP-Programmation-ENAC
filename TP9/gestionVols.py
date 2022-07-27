@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request,redirect,session
-from flask import url_for
 from fonctions import *
 from flask_session import Session
+import os
 
 
 app = Flask(__name__)
@@ -26,7 +26,70 @@ def ajouter() :
 
 @app.route ('/connecter.html')
 def connecter() :
-    return render_template('header.html',page_name="GSEA - Connexion")+render_template('connecter.html')+render_template('footer.html')
+    return render_template('header_home.html',page_name="GSEA - Connexion")+render_template('connecter.html')+render_template('footer.html')
+
+@app.route ('/deco.html')
+def deco():
+    session['user']=''
+    return redirect('/')
+
+
+@app.route ('/connect',methods = ['POST'])
+def connect():   
+    if request.form['action'] == 'connect':     
+        form_user=request.form['login']
+        form_password=request.form['pwd']
+        
+        stream = os.popen('./hachage '+form_password)
+        output = stream.read()
+        try:
+            if int(output)==int(get_hash(form_user)):
+                session['user']=form_user
+                return redirect('/')
+            else:
+                page = """
+                    <html>
+                        <head>
+                            <meta http-equiv="Refresh" content="5; url=/connecter.html" />
+                        </head>
+                        <body>
+                        Mauvais mot de passe ou nom d'utilisateur. Redirection automatique dans 5 secondes
+                        </body>
+                    </html>
+                        """  
+                return page
+        except:
+            page = """
+                    <html>
+                        <head>
+                            <meta http-equiv="Refresh" content="5; url=/connecter.html" />
+                        </head>
+                        <body>
+                        Mauvais mot de passe ou nom d'utilisateur. Redirection automatique dans 5 secondes
+                        </body>
+                    </html>
+                        """  
+            return page
+    elif request.form['action'] == 'add':
+        form_user=request.form['login']
+        form_password=request.form['pwd']
+        print(existe_deja(form_user))
+        if not existe_deja(form_user):
+            add_user(form_user,form_password)
+        else:
+            page = """
+                    <html>
+                        <head>
+                            <meta http-equiv="Refresh" content="5; url=/connecter.html" />
+                        </head>
+                        <body>
+                        L'utilisateur existe déjà. Redirection automatique dans 5 secondes
+                        </body>
+                    </html>
+                        """  
+            return page
+        return redirect('/connecter.html')
+    
 
 @app.route ('/contact.html')
 def contact() :
@@ -66,7 +129,6 @@ def numVolSuppr(message) :
     
 @app.route('/resultat',methods = ['GET'])
 def ajouteVol():
-    
     result=request.args
     immat = result['immat']
     dep = result['dep']
@@ -113,7 +175,6 @@ def modifVol(message) :
 
 @app.route('/resultat_modif',methods = ['GET'])
 def modif():
-    
     result=request.args
     immat = result['immat']
     dep = result['dep']

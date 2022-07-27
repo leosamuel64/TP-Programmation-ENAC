@@ -61,6 +61,9 @@
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html"><img src="static/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
+        
+        {%if not session.user==''%}
+
         <nav id="navbar" class="navbar">
           <ul>
             <li>
@@ -83,8 +86,13 @@
                 </li>
               </ul>
             </li>
+            {%if session.user==''%}
             <li>
               <a class="nav-link scrollto" href="connecter.html">Se connecter</a>
+            </li>
+            {%endif%}
+            <li>
+              <a class="nav-link scrollto" href="deco.html">Deconnexion</a>
             </li>
             <li>
               <a class="nav-link scrollto" href="contact.html">Contact</a>
@@ -92,6 +100,18 @@
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
+        
+        {%endif%}
+        {%if session.user==''%}
+        <nav id="navbar" class="navbar">
+          <ul>
+        <li>
+          <a class="nav-link scrollto" href="connecter.html">Se connecter</a>
+        </li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+    {%endif%}
         <!-- .navbar -->
       </div>
     </header>
